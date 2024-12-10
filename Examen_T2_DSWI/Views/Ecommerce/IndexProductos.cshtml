@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Examen_T2_DSWI.Models.Articulos>
+
+@{
+    ViewData["Title"] = "IndexProductos";
+}
+
+
+<h1>Tienda de Artículos</h1>
+
+<!-- Contenedor de tarjetas -->
+<div class="container mt-4">
+    <div class="row" id="productsRow">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <!-- Tarjeta de producto -->
+                <div class="card">
+                    <img src="@Url.Content("/Articulos/" + item.cod_art + ".jpg")"
+                         class="card-img-top" alt="@item.nom_art" style="max-width: 100%; max-height: 200px; object-fit: contain;">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.nom_art</h5>
+                        <p class="card-text">Código: @item.cod_art</p>
+                        <p class="card-text">Precio:s/. @item.pre_art</p>
+                        <p class="card-text">Stock: @item.stk_art</p>
+                        <a href="@Url.Action("AgregarAlCarrito", new { id = item.cod_art })" class="btn btn-primary"><i class="fas fa-shopping-cart"></i>Agregar</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

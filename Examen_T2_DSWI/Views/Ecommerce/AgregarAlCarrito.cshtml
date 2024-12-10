@@ -1,0 +1,49 @@
+﻿@model Examen_T2_DSWI.Models.Articulos
+
+@{
+    ViewData["Title"] = "AgregarAlCarrito";
+}
+
+    <h1>Detalles del Artículo</h1>
+
+    <!-- Contenedor para el detalle del artículo -->
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-6">
+                <!-- Tarjeta para mostrar detalles del artículo -->
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Detalles del Producto</h5>
+                    </div>
+                    <div class="card-body">
+                        <!-- Imagen del producto -->
+                        <img src="@Url.Content("/Articulos/" + Model.cod_art + ".jpg")"
+                         class="card-img-top" alt="@Model.nom_art" style="max-width: 100%; max-height: 200px; object-fit: contain;">
+
+                        <ul class="list-unstyled mt-3">
+                            <li><strong>@Html.DisplayNameFor(model => model.cod_art):</strong> @Html.DisplayFor(model => model.cod_art)</li>
+                            <li><strong>@Html.DisplayNameFor(model => model.nom_art):</strong> @Html.DisplayFor(model => model.nom_art)</li>
+                            <li><strong>@Html.DisplayNameFor(model => model.pre_art):</strong> $@Html.DisplayFor(model => model.pre_art)</li>
+                            <li><strong>@Html.DisplayNameFor(model => model.stk_art):</strong> @Html.DisplayFor(model => model.stk_art)</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer text-center">
+                    <div>
+                        <form asp-action="AgregarAlCarrito">
+                            <div>
+                                Ingrese Cantidad a Comprar: @Html.TextBox("cantidad", 1)
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-shopping-cart"></i> Comprar
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
